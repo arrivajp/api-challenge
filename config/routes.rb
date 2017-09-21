@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
 
+  get '/welcome', to: "sessions#new", as: :welcome
   get 'login' => 'sessions#new', :as => :login
   post 'logout' => 'sessions#destroy', :as => :logout
 

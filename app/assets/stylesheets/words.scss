@@ -1,0 +1,38 @@
+// Place all the styles related to the Words controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+div, li, ul, p, h4{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+table, .row{
+  text-align: center;
+  padding-top: 100px;
+}
+
+h4{
+  margin:40px;
+}
+
+.word-title{
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.word-image img{
+  width:auto;
+  height: 350px;
+}
+
+.back{
+  float: left;
+  width:100%;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+.meanings li {
+  text-decoration: line-through;
+}

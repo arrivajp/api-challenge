@@ -1,0 +1,7 @@
+<h1>Editing Word</h1>
+
+<%= render 'form', word: @word %>
+<h4><button><%= link_to "意味を追加する", new_meaning_path(id: params[:id])%></button></h4>
+
+<%= link_to 'Show', @word %> |
+<%= link_to 'Back', words_path %>

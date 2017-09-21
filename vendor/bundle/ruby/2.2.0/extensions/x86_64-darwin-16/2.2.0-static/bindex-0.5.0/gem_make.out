@@ -1,0 +1,11 @@
+/Users/mutsuoyama/.rbenv/versions/2.2.5/bin/ruby -r ./siteconf20170919-8839-1lto39f.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20170919-8839-g85oop/bindex

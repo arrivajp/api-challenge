@@ -1,0 +1,23 @@
+<%= form_with(model: meaning, local: true) do |form| %>
+  <% if meaning.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meaning.errors.count, "error") %> prohibited this meaning from being saved:</h2>
+
+      <ul>
+      <% meaning.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :meaning %>
+    <%= form.text_field :meaning, id: :meaning_meaning %>
+    <%= form.hidden_field :word_id, value: params[:id] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

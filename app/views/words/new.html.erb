@@ -1,0 +1,8 @@
+<h1>New Word</h1>
+<div class="back">
+<%= link_to words_path do %>
+  <i class="fa fa-arrow-circle-left fa-4x" aria-hidden="true"></i>
+<%end%>
+</div>
+
+<%= render 'form', word: @word %>

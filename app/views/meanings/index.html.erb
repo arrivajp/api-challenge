@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Meanings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Meaning</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meanings.each do |meaning| %>
+      <tr>
+        <td><%= meaning.meaning %></td>
+        <td><%= link_to 'Show', meaning %></td>
+        <td><%= link_to 'Edit', edit_meaning_path(meaning) %></td>
+        <td><%= link_to 'Destroy', meaning, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meaning', new_meaning_path %>

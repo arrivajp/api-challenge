@@ -1,0 +1,2 @@
+module HomeindexHelper
+end

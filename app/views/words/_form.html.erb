@@ -1,0 +1,45 @@
+<%= form_with(model: word, local: true) do |f| %>
+  <% if word.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(word.errors.count, "error") %> prohibited this word from being saved:</h2>
+
+      <ul>
+      <% word.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p>単語</p>
+    <%= f.text_field :word, id: :word_word %>
+  </div>
+
+  <div class="field">
+    <p>意味</p>
+    <%= f.fields_for :meanings do |meaning|%>
+      <%= meaning.text_field :meaning %>
+    <%end%>
+  </div>
+
+  <div class="field">
+    <p>英語例文</p>
+      <%= f.fields_for :examples do |english|%>
+      <%= english.text_field :english %>
+    <%end%>
+  </div>
+
+  <div class="field">
+    <p>日本語例文</p>
+      <%= f.fields_for :examples do |japanese|%>
+      <%= japanese.text_field :japanese %>
+    <%end%>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

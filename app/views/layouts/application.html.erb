@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ApiChallenge</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <div class="header-menu">
+      <div class="header-right">
+        <%= link_to new_word_path do %>
+          <i class="fa fa-plus-square fa-4x" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <div class="header-left">
+        <p><%= link_to "My単語帳!", words_path %></P>
+      </div>
+    </div>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

@@ -29,6 +29,8 @@ class WordsController < ApplicationController
 
     @word.examples.build
 
+    @word.details.build
+
   end
 
   # GET /words/1/edit
@@ -84,6 +86,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.require(:word).permit(:word, meanings_attributes: [:meaning, :id], examples_attributes: [:japanese, :english, :id])
+      params.require(:word).permit(:word, meanings_attributes: [:meaning, :id], examples_attributes: [:japanese, :english, :id], details_attributes: [:body, :id])
     end
 end

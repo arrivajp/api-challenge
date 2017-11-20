@@ -5,6 +5,7 @@ div, li, ul, p, h4{
   list-style: none;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 table, .row{
@@ -16,14 +17,18 @@ h4{
   margin:40px;
 }
 
+input:focus {
+    border:solid 1px #EEA34A;
+}
+
 .word-title{
   font-size: 26px;
   font-weight: bold;
 }
 
 .word-image img{
-  width:auto;
-  height: 350px;
+  max-width: 85%;
+  height: auto;
 }
 
 .back{
@@ -35,4 +40,100 @@ h4{
 
 .meanings li {
   text-decoration: line-through;
+}
+
+.japanese_example{
+  display: none;
+}
+
+.display{
+  background-color: blue;
+}
+
+.content-subs {
+  display: inline-block;
+  float: right;
+  margin-right: 5px;
+}
+
+.content-subs div{
+  margin-right: 10px;
+}
+
+.meanings-content{
+  display: inline-block;
+}
+
+.destroy{
+  display: inline-block;
+}
+
+.edit{
+  display: inline-block;
+}
+
+.section{
+  margin: 100px 0px;
+}
+
+.each-title-left{
+  display: inline-block;
+  float: left;
+  margin-left: 50px;
+  font-size: 20px;
+}
+
+.each-title-right{
+  float: right;
+  margin-right: 50px;
+}
+
+.each-title{
+  display: inline-block;
+  width:80%;
+  margin: 0px 12.5%;
+  border-bottom: 2px dashed #8DB6CD;
+}
+
+.content-parent{
+  width: 80%;
+  display: inline-block;
+  margin: 20px 10%;
+  display: inline-block;
+}
+
+.content-parent ul{
+  display: grid;
+}
+
+.content-parent li{
+  margin: 10px 100px;
+}
+
+.content-parent li p{
+  font-size: 16px;
+}
+
+.content{
+  float: left;
+  font-size: 16px;
+}
+
+.content-subs{
+  float: right;
+}
+
+.word-title{
+  border-bottom: 1px dashed #8DB6CD;
+  padding-bottom: 25px;
+  margin:40px 12.5%;
+}
+
+.words ul{
+  margin-top: 0px;
+}
+
+.words li{
+  margin:20px 200px;
+  border-bottom: 1px dashed #F5F5F5;
 }

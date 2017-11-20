@@ -1,23 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>単語一覧</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="words">
+  <h1 class="title-topic">Your words</h1>
+  <ul>
     <% @words.each do |word| %>
-      <tr>
-        <td><%= link_to word do%>
+      <li>
+        <%= link_to word do%>
           <%= word.word %>
-          <%end%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <%end%>
+        <div class="content-subs">
 
-<br>
+            <div class="destroy">
+              <%= link_to word, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </div>
+        </div>
+      </li>
+    <% end %>
+  </div>

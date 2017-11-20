@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rmagick'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem "mini_magick"
 gem "sorcery"

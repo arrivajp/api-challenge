@@ -11,19 +11,27 @@
     </div>
   <% end %>
 
+<div class="field-container">
   <div class="field">
-    <p>単語</p>
+    <p>Word</p>
     <%= f.text_field :word, id: :word_word %>
   </div>
 
   <div class="field">
-    <p>意味</p>
+    <p>Meaning</p>
     <%= f.fields_for :meanings do |meaning|%>
-      <%= meaning.text_field :meaning %>
+      <%= meaning.cktext_area :meaning %>
     <%end%>
   </div>
 
   <div class="field">
+    <p>Explaination</p>
+     <%= f.fields_for :details do |detail|%>
+       <%= detail.cktext_area :body%>
+     <% end%>
+  </div>
+
+  <!-- <div class="field">
     <p>英語例文</p>
       <%= f.fields_for :examples do |english|%>
       <%= english.text_field :english %>
@@ -35,7 +43,7 @@
       <%= f.fields_for :examples do |japanese|%>
       <%= japanese.text_field :japanese %>
     <%end%>
-  </div>
+  </div> -->
 
 
 
@@ -43,3 +51,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

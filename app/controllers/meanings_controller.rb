@@ -42,7 +42,7 @@ class MeaningsController < ApplicationController
   def update
     respond_to do |format|
       if @meaning.update(meaning_params)
-        format.html { redirect_to @meaning, notice: 'Meaning was successfully updated.' }
+        format.html { redirect_to @meaning.word, notice: 'Meaning was successfully updated.' }
         format.json { render :show, status: :ok, location: @meaning }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class MeaningsController < ApplicationController
   def destroy
     @meaning.destroy
     respond_to do |format|
-      format.html { redirect_to meanings_url, notice: 'Meaning was successfully destroyed.' }
+      format.html { redirect_to @meaning.word, notice: 'Meaning was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

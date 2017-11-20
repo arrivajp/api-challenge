@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915094715) do
+ActiveRecord::Schema.define(version: 20171016003615) do
+
+  create_table "details", force: :cascade do |t|
+    t.string "body"
+    t.integer "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "examples", force: :cascade do |t|
     t.string "japanese"

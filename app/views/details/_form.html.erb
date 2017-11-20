@@ -1,0 +1,26 @@
+<%= form_with(model: detail, local: true) do |form| %>
+  <% if detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detail.errors.count, "error") %> prohibited this detail from being saved:</h2>
+
+      <ul>
+      <% detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field-container">
+    <div class="field">
+      <%= form.label :detail %>
+      <%= form.cktext_area :body, id: :detail_body%>
+      <%= form.hidden_field :word_id, value: params[:id] %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+</div>
+
+<% end %>

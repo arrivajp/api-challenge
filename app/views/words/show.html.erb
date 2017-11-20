@@ -1,39 +1,72 @@
 <p id="notice"><%= notice %></p>
-  <div class="back">
-  <%= link_to words_path do %>
-    <i class="fa fa-arrow-circle-left fa-4x" aria-hidden="true"></i>
-  <%end%>
-</div>
+
 
 
 <div class="row">
-
   <div class="col-xs-6">
     <h4 class="word-title"><%= @first_words %></h4>
     <h4 class="word-image"><%= image_tag @word_search.items[rand(10)].link %></h4>
-  <h3>means...</h3>
-    <h4 class="meanings">
+</div>
+</div>
+  <div class="meaning section">
+    <div class="each-title">
+      <div class="each-title-left">means...</div>
+      <div class="each-title-right"><%= link_to new_meaning_path(id: params[:id]) do%>
+          <i class="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="meanings content-parent">
       <ul><% @word.meanings.each do |meaning| %>
-      <li><%= meaning.meaning %></li>
+      <li><div class="content">
+        <%= raw(meaning.meaning) %>
+      </div>
+      <div class="content-subs">
+          <div class="edit">
+            <%= link_to edit_meaning_path(id: params[:id]) do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="destroy">
+            <%= link_to meaning, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </div>
+      </div>
+      </li>
     <%end%>
   </ul>
-  <h4>
-    <button><%= link_to "意味を追加する", new_meaning_path(id: params[:id])%>
-    </button>
-  </h4>
   </div>
-  <p>例文</p>
-  <h4>
-    <ul><% @word.examples.each do |example| %>
-      <li class="english_example"><%= example.english %></li>
-      <li class="japanese_example"><%= example.japanese%></li>
-    <%end%>
+</div>
+
+
+<div class="details section">
+  <div class="each-title">
+    <div class="each-title-left">details...</div>
+    <div class="each-title-right"><%= link_to new_detail_path(id: params[:id]) do%>
+        <i class="fa fa-plus-square-o fa-3x" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="content-parent">
+    <ul><% @word.details.each do |detail| %>
+    <li><div class="content">
+      <%= raw(detail.body) %>
+    </div>
+    <div class="content-subs">
+        <div class="edit">
+          <%= link_to edit_detail_path(id: params[:id]) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <div class="destroy">
+          <%= link_to detail, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </div>
+    </div>
+    </li>
+      <%end%>
     </ul>
-    <button><%= link_to "例文を追加する", new_example_path(id: params[:id])%>
-    </button>
-  </h4>
-
-
-
-
+  </div>
 </div>

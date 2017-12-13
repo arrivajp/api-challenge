@@ -13,7 +13,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-$(".html").click(function() {
-      alert("hello");
-});
-});

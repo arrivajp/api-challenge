@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+<!--
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div> -->
 
   <div class="field">
     <%= f.label :email %>
@@ -30,3 +35,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= link_to 'Session', new_session_path %>

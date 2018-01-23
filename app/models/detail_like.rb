@@ -1,4 +1,3 @@
 class DetailLike < Like
-  belongs_to :detail, foreign_key: 'word_id'
-  belongs_to :word
+  belongs_to :detail, foreign_key: 'content_id'
 end

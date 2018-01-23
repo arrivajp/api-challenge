@@ -67,20 +67,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def set_like_by_type
-      @like_list = Array.new
-      TYPE.each do |like|
-        key = "@#{like}"
-        if @user.send(like).nil?
-          like = like.gsub(/\b\w/) { |s| s.upcase }
-          value = self.class.const_get(like).new
-        else
-          value = @user.send(like)
-        end
-        instance_variable_set(key, value)
-        @like_list << instance_variable_get(key)
-      end
-
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

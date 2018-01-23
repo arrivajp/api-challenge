@@ -5,7 +5,12 @@
 <div class="row">
   <div class="col-xs-6">
     <h4 class="word-title"><%= @first_words %></h4>
-    <h4 class="word-image"><%= image_tag @word_search.items[rand(10)].link %></h4>
+    <% if @pictureoi %>
+      <h4 class="word-image"><%= image_tag @pictureoi.picture %></h4>
+    <% else %>
+      <h4 class="word-image"><%= image_tag @word_search.items[rand(10)].link %></h4>
+    <%end%>
+
 </div>
 </div>
   <div class="meaning section">
@@ -22,11 +27,15 @@
         <%= raw(meaning.meaning) %>
       </div>
       <div class="content-subs">
+        <% if @current_user.id = @word_user%>
           <div class="edit">
             <%= link_to edit_meaning_path(id: params[:id]) do %>
               <i class="fa fa-pencil" aria-hidden="true"></i>
             <% end %>
           </div>
+          <%else%>
+          aaa
+          <%end%>
           <div class="destroy">
             <%= link_to meaning, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
               <i class="fa fa-trash" aria-hidden="true"></i>

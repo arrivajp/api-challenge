@@ -21,6 +21,7 @@
     <p>Meaning</p>
     <%= f.fields_for :meanings do |meaning|%>
       <%= meaning.cktext_area :meaning %>
+      <%= meaning.hidden_field :user_id, :value => @current_user.id %>
     <%end%>
   </div>
 
@@ -28,6 +29,7 @@
     <p>Explaination</p>
      <%= f.fields_for :details do |detail|%>
        <%= detail.cktext_area :body%>
+       <%= detail.hidden_field :user_id, :value => @current_user.id %>
      <% end%>
   </div>
 
@@ -44,6 +46,15 @@
       <%= japanese.text_field :japanese %>
     <%end%>
   </div> -->
+
+  <div class="field">
+    <p>Explaination</p>
+     <%= f.fields_for :pictures do |picture|%>
+     <%= picture.file_field :picture %>
+     <%= picture.hidden_field :picture_cache %>
+     <%= picture.hidden_field :user_id, :value => @current_user.id %>
+     <% end%>
+  </div>
 
 
 

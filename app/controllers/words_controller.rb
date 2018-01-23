@@ -19,6 +19,15 @@ class WordsController < ApplicationController
     p @word_search
 
     @word = Word.find(params[:id])
+
+    @pictureoi = Picture.find_by(word_id: params[:id])
+
+    # @present_user = User.find_by(params[:id])
+
+    # @word_user = Word.find_by(user_id: params[:id])
+
+    # @user = User.find(current_user.id)
+    # set_like_by_type
   end
 
   # GET /words/new
@@ -31,6 +40,9 @@ class WordsController < ApplicationController
 
     @word.details.build
 
+    @word.pictures.build
+
+    @word.users.build
   end
 
   # GET /words/1/edit
@@ -86,6 +98,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.require(:word).permit(:word, meanings_attributes: [:meaning, :id], examples_attributes: [:japanese, :english, :id], details_attributes: [:body, :id])
+      params.require(:word).permit(:word, likes_attributes: [:id, :user_id, :word_id, :type], meanings_attributes: [:meaning, :id, :user_id], examples_attributes: [:japanese, :english, :id], details_attributes: [:body, :id, :user_id], pictures_attributes: [:picture, :id, :picture_cache, :user_id], users_attributes: [:id])
     end
 end

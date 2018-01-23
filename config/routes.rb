@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pictures
   resources :details
   resources :examples
   resources :meanings
@@ -10,6 +11,16 @@ Rails.application.routes.draw do
   root :to => 'words#index'
   resources :sessions
   resources :users
+  
+  resources :meanings do
+    resources :likes, only: [:create, :destroy]
+  end
+  resources :details do
+    resources :likes, only: [:create, :destroy]
+  end
+  resources :pictures do
+    resources :likes, only: [:create, :destroy]
+  end
 
   get '/welcome', to: "sessions#new", as: :welcome
   get '/logout' => 'sessions#destroy', :as => :logout

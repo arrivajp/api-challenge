@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016003615) do
+ActiveRecord::Schema.define(version: 20180123013712) do
+
+  create_table "detail_likes", force: :cascade do |t|
+    t.integer "like_id"
+    t.integer "detail_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "details", force: :cascade do |t|
     t.string "body"
     t.integer "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "examples", force: :cascade do |t|
@@ -27,12 +35,43 @@ ActiveRecord::Schema.define(version: 20171016003615) do
     t.integer "word_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "word_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meaning_likes", force: :cascade do |t|
+    t.integer "like_id"
+    t.integer "meaning_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "meanings", force: :cascade do |t|
     t.string "meaning"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "word_id"
+    t.integer "user_id"
     t.index ["word_id"], name: "index_meanings_on_word_id"
+  end
+
+  create_table "picture_likes", force: :cascade do |t|
+    t.integer "like_id"
+    t.integer "picture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "picture"
+    t.string "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "word_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,6 +87,7 @@ ActiveRecord::Schema.define(version: 20171016003615) do
     t.string "word"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "picture_id"
   end
 
 end

@@ -22,6 +22,15 @@ class WordsController < ApplicationController
 
     @pictureoi = Picture.find_by(word_id: params[:id])
 
+    # @menainglike = Like.create(user_id: current_user.id, content_id: params[:meaning_id], word_id: params[:word_id])
+
+    @likelike = Meaning.find(1)
+
+    @word.likes.build
+
+    # @content = Like.find_by(content_id: params[:meaning_id])
+
+
     # @present_user = User.find_by(params[:id])
 
     # @word_user = Word.find_by(user_id: params[:id])
@@ -43,6 +52,7 @@ class WordsController < ApplicationController
     @word.pictures.build
 
     @word.users.build
+
   end
 
   # GET /words/1/edit
@@ -98,6 +108,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.require(:word).permit(:word, likes_attributes: [:id, :user_id, :word_id, :type], meanings_attributes: [:meaning, :id, :user_id], examples_attributes: [:japanese, :english, :id], details_attributes: [:body, :id, :user_id], pictures_attributes: [:picture, :id, :picture_cache, :user_id], users_attributes: [:id])
+      params.require(:word).permit(:word, likes_attributes: [:id, :user_id, :word_id, :type, :content_id], meanings_attributes: [:meaning, :id, :user_id], examples_attributes: [:japanese, :english, :id], details_attributes: [:body, :id, :user_id], pictures_attributes: [:picture, :id, :picture_cache, :user_id], users_attributes: [:id])
     end
 end

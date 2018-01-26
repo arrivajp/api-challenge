@@ -30,7 +30,7 @@
      <%= f.fields_for :details do |detail|%>
        <%= detail.cktext_area :body%>
        <%= detail.hidden_field :user_id, :value => @current_user.id %>
-     <% end%>
+     <%end%>
   </div>
 
   <!-- <div class="field">

@@ -21,10 +21,12 @@
         <%= raw(meaning.meaning) %>
       </div>
       <div class="content-subs">
-        <%= render :partial => "likes/form"%>
+        <%= button_to meaning_likes_path(meaning.id), remote: true do %>
+          <i class="fa fa-archive" aria-hidden="true"></i>
+        <% end %>
         <% if @user = @current_user.id%>
           <div class="edit">
-            <%= link_to edit_meaning_path(meaning.id) do %>
+            <%= link_to edit_meaning_path(meaning.id), id: "like-buttons", remote: true do %>
               <i class="fa fa-pencil" aria-hidden="true"></i>
             <% end %>
           </div>

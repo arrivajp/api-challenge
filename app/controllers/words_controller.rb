@@ -53,6 +53,9 @@ class WordsController < ApplicationController
 
     @word.users.build
 
+    @word.likes.build
+
+
   end
 
   # GET /words/1/edit

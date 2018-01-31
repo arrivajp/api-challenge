@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   resources :users
 
   resources :meanings do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy], format: "json"
   end
   resources :details do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy], format: "json"
   end
   resources :pictures do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy],format: "json"
   end
 
   get '/welcome', to: "sessions#new", as: :welcome

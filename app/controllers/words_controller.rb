@@ -24,9 +24,8 @@ class WordsController < ApplicationController
 
     # @menainglike = Like.create(user_id: current_user.id, content_id: params[:meaning_id], word_id: params[:word_id])
 
-    @likelike = Meaning.find(1)
-
     @word.likes.build
+
 
     # @content = Like.find_by(content_id: params[:meaning_id])
 

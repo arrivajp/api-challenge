@@ -10,11 +10,21 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user_picture = User.find_by(id: current_user.id).picture
+    @user_name = User.find_by(id: current_user.id).name
+
+    @content_number = Like.find(params[:id]).content_id
+
+    @count_detail_likes = Like.where(:user_id => params[:id], :type => "DetailLike").count
+    @count_meaning_likes = Like.where(:user_id => params[:id], :type => "MeaningLike").count
+
+
   end
 
   # GET /users/new
   def new
     @user = User.new
+    render :layout => nil
   end
 
   # GET /users/1/edit
@@ -67,10 +77,10 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :email, :password, :password_confirmation, pictures_attributes: [:picture, :id], meanings_attributes: [:id], details_attributes: [:id])
+      params.require(:user).permit(:id, :name, :picture, :email, :password, :password_confirmation, pictures_attributes: [:picture, :id], meanings_attributes: [:id], details_attributes: [:id])
     end
 end

@@ -16,6 +16,7 @@
     <%= form.label :meaning %>
     <%= form.cktext_area :meaning, id: :meaning_meaning %>
     <%= form.hidden_field :word_id, value: params[:id] %>
+    <%= form.hidden_field :user_id, :value => @current_user.id %>
   </div>
 
   <div class="actions">

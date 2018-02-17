@@ -10,6 +10,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :pictures
   accepts_nested_attributes_for :likes
 
+  mount_uploader :picture, PictureUploader
+
+
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

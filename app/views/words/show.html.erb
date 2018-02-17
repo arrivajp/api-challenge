@@ -2,7 +2,18 @@
 
 
 
+<div class="row">
+  <div class="col-xs-6">
 
+
+</div>
+<script type="text/jscript">
+$function(){
+$("#likey").on("click", function(){
+  alert("aaa");
+});
+});
+</script>
 </div>
   <div class="meaning section">
     <div class="each-title">
@@ -12,39 +23,39 @@
         <% end %>
       </div>
     </div>
-    <div class="meanings content-parent">
+    <div id="likey" class="meanings content-parent">
       <ul><% @word.meanings.each do |meaning| %>
       <li><div class="content">
-        <div class="good">
-
-        </div>
         <%= raw(meaning.meaning) %>
       </div>
       <div class="content-subs">
-        <%= button_to meaning_likes_path(meaning.id), remote: true do %>
-          <i class="fa fa-archive" aria-hidden="true"></i>
-        <% end %>
-        <% if @user = @current_user.id%>
-          <div class="edit">
-            <%= link_to edit_meaning_path(meaning.id), id: "like-buttons", remote: true do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            <% end %>
-          </div>
-          <div class="destroy">
-            <%= link_to meaning, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>
-          </div>
-          <%else%>
-          aaa
-          <%end%>
+
+        <div class="like-button">
+          <%= button_to meaning_likes_path(meaning.id), :id => "likey", remote: true do %>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+              <%= MeaningLike.where(content_id: raw(meaning.id)).count  %>
+          <% end %>
+        </div>
+          <% if @user = @current_user.id%>
+            <div class="edit">
+              <%= link_to edit_meaning_path(meaning.id), id: "like-buttons", remote: true do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %>
+            </div>
+            <div class="destroy">
+              <%= link_to meaning, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </div>
+            <%else%>
+            aaa
+            <%end%>
       </div>
       </li>
-    <%end%>
-  </ul>
+      <%end%>
+      </ul>
+    </div>
   </div>
-</div>
-
 <div class="details section">
   <div class="each-title">
     <div class="each-title-left">details...</div>
@@ -59,16 +70,22 @@
       <%= raw(detail.body) %>
     </div>
     <div class="content-subs">
-        <div class="edit">
-          <%= link_to edit_detail_path(id: params[:id]) do %>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %>
-        </div>
-        <div class="destroy">
-          <%= link_to detail, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>
-        </div>
+      <div class="like-button">
+        <%= button_to detail_likes_path(detail.id), remote: true do %>
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            <%= DetailLike.where(content_id: raw(detail.id)).count  %>
+        <% end %>
+      </div>
+      <div class="edit">
+        <%= link_to edit_detail_path(id: params[:id]) do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <div class="destroy">
+        <%= link_to detail, data: {:confirm => 'Are you sure?'}, :method => :delete do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
+      </div>
     </div>
     </li>
       <%end%>

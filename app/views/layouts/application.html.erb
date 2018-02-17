@@ -5,9 +5,11 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <div class="header-menu">
       <div class="header-right">
+          <i class="fa fa-user fa-4x" aria-hidden="true"></i>
         <%= link_to new_word_path do %>
           <i class="fa fa-plus-square fa-4x" aria-hidden="true"></i>
         <% end %>

@@ -1,13 +1,95 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-</p>
+<h1>User</h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="user_contents">
+  <div class="user_picture">
+    <% if @user.picture? %>
+      <div class="thumbnail">
+        <%= image_tag @user.picture.url %>
+      </div>
+    <% end %>
+  </div>
+  <div class="user_name">
+    <%= @user.name %>
+  </div>
+
+</div>
+<div class="user_likes">
+  <div class="liked_meaning_title liked_content_title">
+    Likeされた意味
+  </div>
+  <%= @count_meaning_likes = MeaningLike.where(:user_id => @user).count %>
+
+    <ul><% @user.likes.each do |like| %>
+      <li>
+        <div class="meaning_user_like">
+          <% @content_number = raw(like.content_id) %>
+          <% @word_number = raw(like.word_id) %>
+              <% begin %>
+                <div class="found_words found_words_meaning">
+                <%= Word.find(@word_number).id %>
+              <%rescue ActiveRecord::RecordNotFound%>
+                  <div>
+                    この言葉は削除されました
+                  </div>
+                <% end %>
+                </div>
+              <div class="found_meanings found_contents">
+              <% begin %>
+                <%= raw(Meaning.find(@content_number).id) %>
+                <%rescue ActiveRecord::RecordNotFound%>
+                  <div>
+                    The meaning was deleted
+                  </div>
+                <% end %>
+              </div>
+              <div>
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              </div>
+        </div>
+      </li>
+      <%end%>
+    </ul>
+    <div class="liked_detail_title liked_content_title">
+      Likeされた詳細
+    </div>
+    <%= @count_detail_likes %>
+    <ul><% @user.likes.each do |like| %>
+      <li>
+        <div class="meaning_user_like">
+        <% @content_number = raw(like.content_id) %>
+        <% @word_number = raw(like.content_id) %>
+            <% begin %>
+            <div class="found_words found_words_meaning">
+              <%= raw(Word.find(@word_number).id) %>
+              <%rescue ActiveRecord::RecordNotFound%>
+                <div>
+                  この言葉は削除されました
+                </div>
+              <% end %>
+            </div>
+            <div class="found_meanings found_contents">
+            <% begin %>
+              <%= raw(Detail.find(@content_number).id) %>
+              <%rescue ActiveRecord::RecordNotFound%>
+                <div>
+                  このdetailは削除されました
+                </div>
+              <% end %>
+            </div>
+            <div>
+              aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </div>
+          </div>
+      </li>
+      <%end%>
+    </ul>
+</div>
+
+<div class="delete_user">
+  <%= link_to 'Destroy', edit_user_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
